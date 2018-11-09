@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+		  <title>Summerville Seaworld Continue</title>
+		</head>
+		
+		<body>
+			<script type="text/javascript">
+			
+				// FileName:Watford_Program_3.html
+				// Programer: Katelyn Watford
+				// Purpose: Building on to Summerville Seaworld
+				
+				//Global Var:
+				var PRE_FORMAT = "<pre >";
+				var END_FORMAT = "</pre >";
+				
+				var CONTRACTOR_ID_1 = 11237;
+				var CONTRACTOR_ID_2 = 10979;
+				var CONTRACTOR_ID_3 = 21352;
+				var CONTRACTOR_ID_4 = 22976;
+				var CONTRACTOR_ID_5 = 33209;
+			
+				var BID_PRICE_1 = 37.75;
+				var BID_PRICE_2 = 38.95;				
+				var BID_PRICE_3 = 44.99;	
+				var BID_PRICE_4 = 45.35;	
+				var BID_PRICE_5 = 22.85;	
+
+				var WATER_HEIGHT = 11; 
+
+				var WOODEN_SEAT = 5.5;
+			    
+			    var PLASTIC_SEAT = 4.8;
+
+				var bid;
+
+			    var totalBid_1;
+				var totalBid_2;
+				var totalBid_3;
+				var totalBid_4;
+				var totalBid_5;
+				
+				var concreteCost;
+
+				var name;
+				
+				var pondDiameter;
+				var pondRadius; 
+				var pondConcreteArea;
+				
+				var domeDiameter;
+				var domeRadius;
+				var domeArea;
+				
+				var gallonsOfWater;
+				var cubicFtOfWater;
+				
+				var domeMinusPondConcreteArea; 
+				
+			    	var seatType;				
+				var plasticSeatsAv;
+				var woodenSeastsAv;
+				
+				var PLASTIC = "Plastic Seats";
+				var WOODEN = "Wooden Seats";
+				
+				var numSeats;
+				var seatingArea; 
+				
+				
+				//Input:
+				name = prompt("May I please have your first name?");
+				
+				document.write("Okay"  + " " + name + "," + " "+ "when prompted please input the values needed.");
+				
+				gallonsOfWater = prompt("What is the volume of the pond in gallons?");
+				
+				//Calculations:
+				
+				cubicFtOfWater = gallonsOfWater * .13368;
+				
+				pondRadius = Math.sqrt( cubicFtOfWater/ (Math.PI * WATER_HEIGHT));
+				pondConcreteArea = Math.PI * (pondRadius * pondRadius);
+ 				pondDiameter = pondRadius * 2;
+ 				
+				domeDiameter = pondDiameter * 3;
+				domeRadius = domeDiameter / 2;
+				domeArea = Math.PI * (domeRadius * domeRadius);
+				domeMinusPondConcreteArea = domeArea - pondConcreteArea;
+			
+				seatingArea = domeMinusPondConcreteArea * .5;
+				
+				
+				// Seat Type Calculations:
+				plasticSeatsAv = Math.floor(seatingArea / PLASTIC_SEAT);
+				woodenSeatsAv = Math.floor(seatingArea / WOODEN_SEAT);
+				
+				// Seat Instructions:
+				document.write(PRE_FORMAT);
+				document.writeln("1" + " " + PLASTIC + " " + plasticSeatsAv);
+				document.writeln("2" + " " + WOODEN + " " + woodenSeatsAv);
+				document.write(END_FORMAT);
+				document.write("<br> Type 1 is Wooden seats, Type 2 is Plastic seats");
+				
+				// Seat Type Input
+				seatType = prompt("What type of seats would you like to use?");
+				
+				// Seat if else statement
+				if (seatType == 1)
+				{
+					numSeats = woodenSeatsAv;
+					
+					seatType = WOODEN;	
+
+				}
+				else if  (seatType == 2)
+				{
+					numSeats = plasticSeatsAv;
+					
+					seatType = PLASTIC;				
+				}
+				
+				// Seat Selection Output:
+				document.write("<br> Okay, we can order those" + " " +seatType + " " + "for you.");
+				
+				// Bid Calculations:
+				
+				 totalBid_1 = pondConcreteArea * BID_PRICE_1;
+				 totalBid_2 = pondConcreteArea * BID_PRICE_2;
+				 totalBid_3 = pondConcreteArea * BID_PRICE_3;
+				 totalBid_4 = pondConcreteArea * BID_PRICE_4;
+				 totalBid_5 = pondConcreteArea * BID_PRICE_5;
+				
+				// BId Instructions:
+				document.write(PRE_FORMAT);
+				document.writeln("Bid\tContractor Id\tBid Amount\tTotal Bid");
+				document.writeln("1", "\t",CONTRACTOR_ID_1, "\t\t", BID_PRICE_1, "\t\t", totalBid_1.toFixed(2));
+				document.writeln("2", "\t",CONTRACTOR_ID_2, "\t\t", BID_PRICE_2, "\t\t", totalBid_2.toFixed(2));
+				document.writeln("3", "\t",CONTRACTOR_ID_3, "\t\t", BID_PRICE_3, "\t\t", totalBid_3.toFixed(2));
+				document.writeln("4", "\t",CONTRACTOR_ID_4, "\t\t", BID_PRICE_4, "\t\t", totalBid_4.toFixed(2));
+				document.writeln("5", "\t",CONTRACTOR_ID_5, "\t\t", BID_PRICE_5, "\t\t", totalBid_5.toFixed(2));
+				document.write(END_FORMAT);
+				document.write("<br> Choose a contractor based off the contractor's bid number.");
+				
+				alert("Read the table to find out which bid you want. ");
+				
+				//Contractor Input:
+				bid = prompt("Which Concractor would you like to hire for this project?");
+				
+				// Conctractor Caluclations if else statements:
+				if ( bid == 1)
+					{
+						concreteCost = totalBid_1;
+					} 
+					else if (bid == 2) 
+					{
+						concreteCost = totalBid_2;
+					}
+					else if (bid == 3) 
+					{
+						concreteCost = totalBid_3;
+					}
+					else if (bid == 4) 
+					{
+						concreteCost = totalBid_4;
+					}				
+					else if (bid == 5)
+					{
+						concreteCost = totalBid_5;
+					}
+				
+				// Contractor Output:
+				document.write(PRE_FORMAT);
+				document.write("POND VALUES:");
+				document.write("<br>");
+				document.writeln("<br> Diameter:", "\t\t", pondDiameter + " " + "feet.");
+				document.writeln("<br> Area:", "\t\t\t", pondConcreteArea.toFixed(2) + " " + "square feet.");
+				document.writeln("<br> Concrete Cost:", "\t\t", "$" + concreteCost.toFixed(2) );
+				document.writeln("<br> Gallons of water:", "\t", gallonsOfWater);
+				
+				
+				document.writeln("<br> DOME VALUES:");
+				document.writeln("<br> Diameter:", "\t\t\t", domeDiameter + " " + "feet.");
+				document.writeln("<br> Area open under dome:", "\t\t", domeMinusPondConcreteArea.toFixed(2) + " " + "square feet.");
+				document.writeln("<br> Number of Seats:", "\t\t", numSeats);
+				document.write(END_FORMAT);
+				
+				document.write("Please let us know if you need any further information.  Have a great day!");
+				
+				
+				
+
+			</script>
+		</body>
+</html>
